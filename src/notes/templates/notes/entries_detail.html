@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+	{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6 ">
+			<div class="thumbnail">
+				<img src="{{ object.image.url }}">
+			</div>
+			<h1>{{object.title}} <small>Date created: {{ object.timestamp|timesince }}</small></h1>
+			<p>Description: {{ object.description }}</p>
+			<p>Date updated: {{ object.updated }}</p>
+			<a href="{{ object.get_update_url }}">Update Now</a>
+		</div>
+	</div>
+</div>
+	{% endblock content %}
