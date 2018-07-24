@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -37,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', 
-
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     #installed libs
     'crispy_forms',
 
@@ -74,6 +78,12 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'notepad.wsgi.application'
 
@@ -138,3 +148,7 @@ STATIC_ROOT=os.path.join(BASE_DIR, 'static/')
 MEDIA_URL='/media/'
 
 MEDIA_ROOT=os.path.join(VENV_PATH, 'media_root')
+
+LOGIN_REDIRECT_URL= '/entries/'
+
+ACCOUNT_LOGOUT_REDIRECT_URL='/accounts/login'
